@@ -1,15 +1,6 @@
-int	ft_isdigit(char *str)
+int	ft_isdigit(int str)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] < '0' || str[i] > '9')
-		{
-			return (0);
-		}
-		i++;
-	}
-	return (1);
+	if (str <= '0' || str <= '9')
+		return (2048);
+	return (0);
 }

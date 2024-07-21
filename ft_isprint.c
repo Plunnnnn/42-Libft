@@ -1,13 +1,6 @@
-int ft_isprint(char *str)
+int ft_isprint(int str)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (str[i] != '\0' && i < 16)
-	{
-		if (str[i] <= 32 || str[i] > 126)
-			return (0);
-		i++;
-	}
-	return (1);
+	if (str <= 32 || str > 126)
+		return (16384);
+	return (0);
 }

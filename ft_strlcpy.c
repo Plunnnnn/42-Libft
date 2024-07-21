@@ -12,8 +12,8 @@
 
 unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 {
-	static unsigned int	i;
-	unsigned int		src_len;
+	unsigned int	i;
+	unsigned int	src_len;
 
 	i = 0;
 	src_len = 0;
@@ -30,5 +30,5 @@ unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 		i++;
 	}
 	dest[i] = '\0';
-	return (src_len);
+	return (i);
 }

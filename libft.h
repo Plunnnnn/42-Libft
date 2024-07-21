@@ -6,6 +6,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <ctype.h>
+# include <bsd/string.h>
 
 
 //LIBC FUNCTIONS//
@@ -32,5 +34,6 @@ char	*ft_strnstr(const char *string, const char *substring, size_t len);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(const char *src);
+
 
 #endif
