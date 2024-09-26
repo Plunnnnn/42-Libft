@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 17:16:28 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/07/10 14:35:41 by bdenfir          ###   ########.fr       */
+/*   Updated: 2024/09/26 19:57:11 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 char	*ft_strdup(const char *src)
 {
 	size_t				src_size;
-	char			*ptr;
-	int				index;
+	char				*ptr;
+	int					index;
 
 	index = 0;
 	src_size = ft_strlen(src);

@@ -23,7 +23,6 @@ unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 			src_len++;
 		return (src_len);
 	}
-
 	while ((i < size - 1 && src[i] != '\0'))
 	{
 		dest[i] = src[i];

@@ -1,4 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/26 19:13:09 by bdenfir           #+#    #+#             */
+/*   Updated: 2024/09/26 20:50:11 by bdenfir          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
+
+char my_func(unsigned int i, char c)
+{
+    return (c + i); 
+}
 
 int main() {
     // Test ft_atoi
@@ -120,5 +137,121 @@ int main() {
     char toupper_test = 'a';
     printf("ft_toupper: %c, toupper: %c\n", ft_toupper(toupper_test), toupper(toupper_test));
 
-    return 0;
+    // Test ft_substr
+    char a[] = "Tu as reussi !"; 
+	printf("ft_substr : %s\n", ft_substr(a, 6, 8));
+
+    //ft_strjoin
+	char test[] = "tu as ";
+	char test2[] = "reussi !";
+	printf("ft_strjoin: %s\n", ft_strjoin(test, test2));
+
+    //ft_strtrim
+    char test[] = "you made it !";
+	char se[]= " -_";
+	printf("ft_strtim : %s\n", ft_strtrim(test, se));
+
+	//ft_split
+	printf("ft_split test not implemnented yet\n");
+    
+    //ft_itoa
+    int number = -12345;
+	char *str = ft_itoa(number);
+	printf("ft_itoa : %s", str)
+
+    
+    char *test_str = "abcde";
+    char *result = ft_strmapi(test_str, my_func);
+    if (result)
+    {
+        printf("Original: %s\n", test_str);
+        printf("Modified (acegi): %s\n", result);
+        free(result);
+    }
+    else
+    {
+        printf("Memory allocation failed\n");
+    }
+    void my_func2(unsigned int i, char *c)
+    {
+        *c = *c + i;
+    }
+    char test_str[] = "abcde";
+
+    ft_striteri(test_str, my_func);
+    printf("Modified string: %s\n", test_str);
+
+    printf("Test for ft_putchar_fd")
+    printf("Test 1 - Printing to standard output:\n");
+    ft_putchar_fd('A', 1);
+    printf("\n");
+
+    int fd = open("ft_putchar_fd.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    if (fd < 0)
+    {
+        printf("Failed to open file.\n");
+        return 1;
+    }
+
+    printf("Test 2 - ecriture dans le fichier 'ft_putstr_fd.txt'\n");
+    ft_putchar_fd('B', fd);
+
+    close(fd);
+    
+    printf("Test for ft_putstr_fd")
+
+    printf("Test 1 - Printing to standard output:\n");
+    ft_putstr_fd("Hello, World!", 1);
+    printf("\n");
+
+    int fd = open("ft_putstr_fd.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    if (fd < 0)
+    {
+        printf("Failed to open file.\n");
+        return 1;
+    }
+
+    printf("Test 2 - Writing to file 'ft_putstr_fd.txt'\n");
+    ft_putstr_fd("Writing to file!", fd);
+
+    close(fd);
+
+    printf("Test for ft_putendl_fd")
+
+    printf("Test 1 - Printing to standard output:\n");
+    ft_putendl_fd("Hello, World!", 1);
+    
+    int fd = open("ft_putendl_fd.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    if (fd < 0)
+    {
+        printf("Failed to open file.\n");
+        return 1;
+    }
+
+    printf("Test 2 - Writing to file 'ft_putendl_fd.txt'\n");
+    ft_putendl_fd("Writing to file!", fd);
+
+    close(fd);
+
+    printf("Test 2 - Writing to file 'ft_putnbr_fd.txt'\n");
+
+    printf("Test 1 - Printing to standard output:\n");
+    ft_putnbr_fd(42, 1);
+    printf("\n");
+
+    printf("Test 2 - Printing negative number:\n");
+    ft_putnbr_fd(-123, 1);
+    printf("\n");
+
+    int fd = open("ft_putnbr_fd.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    if (fd < 0)
+    {
+        printf("Failed to open file.\n");
+        return 1;
+    }
+
+    printf("Test 3 - Writing number to file 'ft_putnbr_fd.txt'\n");
+    ft_putnbr_fd(987654321, fd);
+
+    close(fd);
 }

@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/26 19:13:33 by bdenfir           #+#    #+#             */
+/*   Updated: 2024/09/26 20:31:17 by bdenfir          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-
-void	*ft_memset(void *s, int c,size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	unsigned long int	i;
-	char *str;
+	char				*str;
 
 	str = (char *)s;
 	i = -1;
@@ -12,6 +23,7 @@ void	*ft_memset(void *s, int c,size_t n)
 		str[i] = c;
 	return (s);
 }
+
 /*
 #include <stdio.h>
 int main(){
