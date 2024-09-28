@@ -6,13 +6,13 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 21:04:47 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/09/27 22:54:59 by bdenfir          ###   ########.fr       */
+/*   Updated: 2024/09/28 13:26:09 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_lis	*ft_lstnew(void *content)
+t_list	*ft_lstnew(void *content)
 {
 	t_list	*new_node;
 

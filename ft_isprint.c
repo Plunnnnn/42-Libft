@@ -6,13 +6,11 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 19:13:26 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/09/26 19:56:38 by bdenfir          ###   ########.fr       */
+/*   Updated: 2024/09/28 13:24:45 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int str)
+int	ft_isprint(int c)
 {
-	if (str <= 32 || str > 126)
-		return (1);
-	return (0);
+	return (c >= 32 && c < 127);
 }
