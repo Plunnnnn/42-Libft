@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 19:14:07 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/09/29 20:56:40 by bdenfir          ###   ########.fr       */
+/*   Updated: 2024/09/30 16:33:54 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	ft_get_end(char const *s1, char const *set)
 		i--;
 	return (i);
 }
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char			*str;
@@ -69,11 +70,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	k = 0;
 	while ((unsigned int)i <= end)
-	{
-		str[k] = s1[i];
-		i++;
-		k++;
-	}
+		str[k++] = s1[i++];
 	str[k] = '\0';
 	return (str);
 }

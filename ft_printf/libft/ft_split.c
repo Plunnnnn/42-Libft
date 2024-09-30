@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 19:13:40 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/09/29 21:11:46 by bdenfir          ###   ########.fr       */
+/*   Updated: 2024/09/30 16:34:01 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "libft.h"
 
-static size_t	count_words(char const *s, char c)
+static	size_t	count_words(char const *s, char c)
 {
 	size_t		count;
 	size_t		i;
