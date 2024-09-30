@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 19:13:41 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/09/30 21:32:46 by bdenfir          ###   ########.fr       */
+/*   Created: 2024/09/30 16:45:53 by bdenfir           #+#    #+#             */
+/*   Updated: 2024/09/30 22:10:02 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h" 
+#include "get_next_line.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*get_next_line(int fd)
 {
-	int		i;
+	char		*line;
+	static char	*left_str;
 
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == (char) c)
-			return ((char *)(s + i));
-		i++;
-	}
-	if (!c)
-		return ((char *)(s + i));
-	return (NULL);
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (0);
+	left_str = ft_read_to_left_str(fd, left_str);
+	if (!left_str)
+		return (NULL);
+	line = ft_get_line(left_str);
+	left_str = ft_new_left_str(left_str);
+	return (line);
 }
-/*
-#include <stdio.h>
-int main(){
-
-	char	str[] = "Eu vou encontrar um ponto . Ca esta ele!";
-	char	c = '.';
-	printf("%s", ft_strchr(str, c));
-}
-*/
