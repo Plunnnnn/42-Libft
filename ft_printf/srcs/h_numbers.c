@@ -6,11 +6,11 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 18:14:12 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/09/29 22:16:55 by bdenfir          ###   ########.fr       */
+/*   Updated: 2024/09/30 15:14:25 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_print.h"
+#include "../include/ft_printf.h"
 
 int	handle_integer(int c)
 {

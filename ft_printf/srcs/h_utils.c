@@ -6,11 +6,11 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 19:43:39 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/09/29 22:18:23 by bdenfir          ###   ########.fr       */
+/*   Updated: 2024/09/30 15:55:01 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_print.h"
+#include "../include/ft_printf.h"
 
 static int	get_length(unsigned int n, int sign)
 {
@@ -59,4 +59,3 @@ char	*ft_utoa(unsigned int n)
 	convert_str(nbr, number, sign, length);
 	return (number);
 }
-
