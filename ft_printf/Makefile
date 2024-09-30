@@ -11,16 +11,16 @@ H_FILES = include/libft.h \
 		 include/ft_printf.h \
 
 SRC_FILES = $(SRC_DIR)/convert.c \
-             $(SRC_DIR)/ft_printf.c \
-             $(SRC_DIR)/h_numbers.c \
-             $(SRC_DIR)/h_string.c \
-             $(SRC_DIR)/h_utils.c
+			 $(SRC_DIR)/ft_printf.c \
+			 $(SRC_DIR)/h_numbers.c \
+			 $(SRC_DIR)/h_string.c \
+			 $(SRC_DIR)/h_utils.c
 
 OBJ_FILES = $(OBJ_DIR)/convert.o \
-            $(OBJ_DIR)/ft_printf.o \
-            $(OBJ_DIR)/h_numbers.o \
-            $(OBJ_DIR)/h_string.o \
-            $(OBJ_DIR)/h_utils.o
+			$(OBJ_DIR)/ft_printf.o \
+			$(OBJ_DIR)/h_numbers.o \
+			$(OBJ_DIR)/h_string.o \
+			$(OBJ_DIR)/h_utils.o
 
 NAME = ft_printf
 

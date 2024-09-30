@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 19:08:42 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/09/30 16:06:16 by bdenfir          ###   ########.fr       */
+/*   Updated: 2024/09/30 16:17:51 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ int	handle_base(unsigned long n, const char *base)
 		n /= ft_strlen(base);
 	}
 	write(1, str, ft_strlen(str));
+	len = ft_strlen(str);
 	free(str);
-	return (ft_strlen(str));
+	return (len);
 }
 
 int	handle_conversion(const char *conversion, va_list args)
