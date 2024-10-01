@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 19:13:19 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/09/29 18:57:49 by bdenfir          ###   ########.fr       */
+/*   Updated: 2024/10/01 16:29:14 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	void		*new;
 	size_t		i;
 
-	if (size != 0 && nmemb > ((size_t) -1 / size))
+	if (size != 0 && nmemb > ((size_t) - 1 / size))
 		return (0);
 	new = (void *) malloc(size * nmemb);
 	if (!new)

@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 16:45:52 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/09/30 21:57:31 by bdenfir          ###   ########.fr       */
+/*   Updated: 2024/10/01 22:00:08 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ size_t	ft_strlen(char *s)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char			*ptr;
 	unsigned int	i;
@@ -65,4 +65,30 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	ptr[i] = '\0';
 	return (ptr);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void		*new;
+	size_t		i;
+
+	if (size != 0 && nmemb > ((size_t) - 1 / size))
+		return (0);
+	new = (void *) malloc(size * nmemb);
+	if (!new)
+		return (NULL);
+	i = 0;
+	while (i < size * nmemb)
+	{
+		*(unsigned char *)(new + i) = 0;
+		i++;
+	}
+	return (new);
+}
+
+char	*clear(char *buffer, char *buf)
+{
+	free(buffer);
+	free(buf);
+	return (NULL);
 }
