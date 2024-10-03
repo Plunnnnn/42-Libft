@@ -1,1 +1,12 @@
-srcs
+total 68
+drwxr-xr-x 6 basmoussent basmoussent  4096 Oct  3 18:16 .
+drwxr-xr-x 9 basmoussent basmoussent  4096 Oct  2 17:44 ..
+-rw-r--r-- 1 basmoussent basmoussent  1375 Oct  2 22:03 Makefile
+-rwxr-xr-x 1 basmoussent basmoussent 16344 Oct  3 18:16 a.out
+-rw-r--r-- 1 basmoussent basmoussent     0 Oct  2 22:03 file1
+-rw-r--r-- 1 basmoussent basmoussent    44 Oct  3 18:01 file2
+drwxr-xr-x 2 basmoussent basmoussent  4096 Oct  2 21:59 include
+drwxr-xr-x 2 basmoussent basmoussent  4096 Oct  2 22:03 libft
+drwxr-xr-x 2 basmoussent basmoussent  4096 Oct  3 14:53 obj
+-rwxr-xr-x 1 basmoussent basmoussent 17056 Oct  3 14:53 pipex
+drwxr-xr-x 2 basmoussent basmoussent  4096 Oct  3 18:00 srcs
