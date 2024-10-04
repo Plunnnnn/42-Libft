@@ -1,128 +1,82 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/04 16:10:26 by bdenfir           #+#    #+#             */
+/*   Updated: 2024/10/04 19:38:25 by bdenfir          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
-#include <sys/wait.h>
-
-
-char	*find_executable(char *cmd, char **envp)
+void	free_args(char **args)
 {
-	char	**paths;
-	char	*path;
-	int		i;
-	char	*part_path;
+	int	i;
 
+	if (!args)
+		return ;
 	i = 0;
-	while (ft_strnstr(envp[i], "PATH", 4) == 0)
-		i++;
-	paths = ft_split(envp[i] + 5, ':');
-	i = 0;
-	while (paths[i])
+	while (args[i])
 	{
-		part_path = ft_strjoin(paths[i], "/");
-		path = ft_strjoin(part_path, cmd);
-		free(part_path);
-		if (access(path, F_OK) == 0)
-			return (path);
-		free(path);
+		free(args[i]);
 		i++;
 	}
-	i = -1;
-	while (paths[++i])
-		free(paths[i]);
-	free(paths);
-	return (0);
+	free(args);
 }
 
 t_pipex	*init_data(char *file1, char *file2)
 {
 	t_pipex	*data;
-	
+
 	data = malloc(sizeof(t_pipex));
 	if (!data)
-		error_exit("Allocatio faile for t-pipex structure");
-	
-	data->pipe_fd[0] = open(file1, O_RDWR);
-	data->pipe_fd[1] = open(file2, O_RDWR);
+		error_exit("Allocation failed for t_pipex structure");
+	data->infile = open(file1, O_RDONLY | O_CREAT, 0644);
+	data->outfile = open(file2, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (data->infile < 0 || data->outfile < 0)
+		error_exit("Error opening files");
 	return (data);
-	// if (data->pipe_fd[0] < 1 || data->pipe_fd[1] < 1)
-	// {
-	// 	perror("error opening specified file");
-	// 	exit(EXIT_FAILURE);
-	// }
-	// if(dup2(data->pipe_fd[0], STDIN_FILENO) == -1)
-	// {
-	// 	perror("error redirection to STDIN_FILENO");
-	// 	exit(EXIT_FAILURE);
-	// }
-	// if(dup2(data->pipe_fd[1], STDOUT_FILENO) == -1)
-	// {
-	// 	perror("error redirection to STDOUT_FILENO");
-	// 	exit(EXIT_FAILURE);
-	// }
 }
 
-void	error_exit(char *str)
-{
-	
-	perror(str);
-	exit(EXIT_FAILURE);
-}
-
-int main(int argc, char **argv, char **envp)
-{
-	t_pipex *data;
-	pid_t pid1;
-	pid_t	pid2;
-
-	if (argc != 5)
-		error_exit("Invalid argument count. Usage: ./pipex file1 cmd1 cmd2 file2");
-	data = init_data(argv[1], argv[argc-1]);
-	create_pipe(data);
-	pid1 = fork_child(data, data->pipe_fd, argv, envp);
-	pid2 = fork_child(data, data->pipe_fd, argv, envp);
-	printf("%d, %d", pid1, pid2);
-	//close_pipes_and_files(&data, pipe_fd);
-	//wait_for_children(pid1, pid2);
-
-	return (0);
-	
-}
-
-pid_t	fork_child(t_pipex *data, int pipe_fd[2], char **argv, char **envp)
+pid_t	fork_child(t_pipex *data, char **argv, char **envp, int nb_cmd)
 {
 	pid_t	pid;
 	char	*cmd;
-	char 	**args;
+	char	**args;
 
-	pid = fork();
-	args = ft_split(argv[1], ' ');
+	args = ft_split(argv[1 + nb_cmd], ' ');
 	cmd = find_executable(args[0], envp);
-	printf("ICICICICI");
-	printf("%d, %s, %s", pid, cmd, args[1]);
-	if (pid < 1)
-		error_exit("error creating fork/child process");
-	if(pipe_fd[0] != STDIN_FILENO)
+	pid = fork();
+	if (pid < 0)
+		error_exit("Error creating fork/child process");
+	if (pid == 0)
 	{
-		close(STDIN_FILENO);
-		dup2(pipe_fd[0], STDIN_FILENO);
-		close(pipe_fd[0]);
+		pipe_redirection(nb_cmd, data);
+		if (execve(cmd, args, envp) == -1)
+			error_exit("command not found");
 	}
-	if (pipe_fd[1] != STDOUT_FILENO)
-	{
-		close(STDOUT_FILENO);
-		dup2(pipe_fd[1], STDOUT_FILENO);
-		close(pipe_fd[1]);
-	}
-	
-	if(execve(cmd, args, envp) == -1)
-		error_exit("failed to execute command");
-	printf("%d", data->pipe_fd[0]);
-	return(pid);
-	
+	free_args(args);
+	free(cmd);
+	return (pid);
 }
 
-void create_pipe(t_pipex *data)
+int	main(int argc, char **argv, char **envp)
 {
-	if (pipe(data->pipe_fd) == -1)
-		error_exit("failed toi create pipe");
-}
+	t_pipex	*data;
+	pid_t	pid1;
+	pid_t	pid2;
 
+	if (argc != 5)
+		error_exit("Invalid argument Usage:./pipex file1 cmd1 cmd2 file2");
+	data = init_data(argv[1], argv[argc - 1]);
+	create_pipe(data);
+	pid1 = fork_child(data, argv, envp, 1);
+	pid2 = fork_child(data, argv, envp, 2);
+	clean_data(data);
+	wait_pid(pid1, pid2);
+	free(data);
+	return (0);
+}

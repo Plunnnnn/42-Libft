@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/28 22:48:54 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/09/28 23:31:31 by bdenfir          ###   ########.fr       */
+/*   Updated: 2024/10/04 16:17:57 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t n)
 {
-	size_t    i;
+	size_t	i;
 
 	if (dst == src)
 		return (dst);
