@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I include
+CFLAGS = -Wall -Wextra -Werror -g -I include
 
 SRC_DIR = srcs
 OBJ_DIR = obj

@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:22:29 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/10/08 18:56:59 by bdenfir          ###   ########.fr       */
+/*   Updated: 2024/10/09 21:00:41 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_stack *create_node(int content)
 	if (!new_node)
 		return NULL;
 	new_node->content = content;
-	new_node->stack = "A";
+	new_node->stack = 'A';
 	new_node->next = NULL;
 	new_node->previous = NULL;
 	return (new_node);

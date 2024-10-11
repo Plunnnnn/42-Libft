@@ -6,13 +6,13 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 12:50:37 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/10/08 18:50:27 by bdenfir          ###   ########.fr       */
+/*   Updated: 2024/10/11 18:34:48 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	fill_unique(int *arr, int size, int *unique)
+int	fill_unique(int *arr, int size, int *unique)
 {
 	int	i;
 	
@@ -22,6 +22,7 @@ void	fill_unique(int *arr, int size, int *unique)
 		unique[i] = arr[i];
 		i++;
 	}
+	return (i);
 }
 
 void	sort_unique(int *unique, int unique_count)
@@ -71,17 +72,19 @@ void	map_compressed(int *arr, int size, int *unique, int unique_count, int *comp
 }
 
 // Function to perform coordinate compression
-void	coordinate_compression(int *arr, int size, int *compressed)
+int	coordinate_compression(int *arr, int size, int *compressed)
 {
 	int *unique;
+	int	size_array;
 	
 	unique = (int *)malloc(size * sizeof(int));
 	if (!unique)
-		return;
-	fill_unique(arr, size, unique);
+		return 0;
+	size_array = fill_unique(arr, size, unique);
 	sort_unique(unique, size);
 	map_compressed(arr, size, unique, size, compressed);
 	free(unique);
+	return (size_array);
 }
 
 // int main(void)
