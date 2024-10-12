@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 15:28:20 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/10/09 17:01:50 by bdenfir          ###   ########.fr       */
+/*   Updated: 2024/10/12 19:25:07 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	bit_length(unsigned int n)
 {
-	int length;
-	
+	int	length;
+
 	length = 0;
 	while (n > 0)
 	{

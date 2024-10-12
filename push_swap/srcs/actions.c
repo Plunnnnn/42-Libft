@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:09:37 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/10/11 21:37:31 by bdenfir          ###   ########.fr       */
+/*   Updated: 2024/10/12 19:28:52 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,22 @@ void	swap(t_stack **stack)
 	t_stack	*second;
 
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		return;
+		return ;
 	top = *stack;
 	second = top->next;
 	if (second == NULL)
-		return;
+		return ;
 	top->next = second->next;
 	if (top->next != NULL)
 		top->next->previous = top;
 	second->next = top;
-	second->previous = NULL; 
+	second->previous = NULL;
 	top->previous = second;
 	*stack = second;
 	if (second->stack == 'A')
 		write(1, "sa\n", 3);
 	else
 		write(1, "sb\n", 3);
-
 }
 
 // Push the top elements of stack1 to the head of stack2
@@ -44,12 +43,11 @@ void	push(t_stack **stack1, t_stack **stack2)
 	t_stack	*pushed_node;
 
 	if (*stack1 == NULL)
-		return;
+		return ;
 	pushed_node = *stack1;
 	*stack1 = pushed_node->next;
 	if (*stack1 != NULL)
 		(*stack1)->previous = NULL;
-
 	pushed_node->next = *stack2;
 	if (*stack2 != NULL)
 		(*stack2)->previous = pushed_node;
@@ -69,12 +67,12 @@ void	push(t_stack **stack1, t_stack **stack2)
 // varable of the bottom elements and clearing it's next pointer
 void	rotate(t_stack **stack)
 {
-	t_stack *node;
-	t_stack *start;
+	t_stack	*node;
+	t_stack	*start;
 
 	node = *stack;
 	if (node == NULL || node->next == NULL)
-		return;
+		return ;
 	start = node;
 	while (node->next != NULL)
 		node = node->next;
@@ -87,10 +85,7 @@ void	rotate(t_stack **stack)
 		write(1, "ra\n", 3);
 	else
 		write(1, "rb\n", 3);
-	
 }
-
-
 
 // Reverse rotate stack elements (i-th elements become (i-1)-th element)
 //
@@ -126,7 +121,6 @@ void	change_stack(t_stack *node)
 	else
 		node->stack = 'A';
 }
-
 
 // I will not implement rr/rrr, ss, since they are not needed for my algorithme
 // but if you ever need it you can just make a function, following this pseudo

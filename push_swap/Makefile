@@ -44,6 +44,7 @@ fclean: clean
 re: fclean all
 
 norme:
+	clear
 	norminette $(SRC_FILES) $(H_FILES)
 
 update:

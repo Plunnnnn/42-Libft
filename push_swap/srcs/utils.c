@@ -6,17 +6,19 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:22:29 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/10/09 21:00:41 by bdenfir          ###   ########.fr       */
+/*   Updated: 2024/10/12 19:24:55 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack *create_node(int content)
+t_stack	*create_node(int content)
 {
-	t_stack *new_node = (t_stack *)malloc(sizeof(t_stack));
+	t_stack	*new_node;
+
+	new_node = (t_stack *)malloc(sizeof(t_stack));
 	if (!new_node)
-		return NULL;
+		return (NULL);
 	new_node->content = content;
 	new_node->stack = 'A';
 	new_node->next = NULL;
@@ -56,20 +58,19 @@ int	ft_atoi(const char *str)
 	return (rslt * min);
 }
 
-int	ft_strncmp(char *s1, char *s2, unsigned int n)
+void	free_stack(t_stack **stack)
 {
-	unsigned int	i;
+	t_stack	*current;
+	t_stack	*next_node;
 
-	i = 0;
-	if (n < 1)
+	if (!stack || !(*stack))
+		return ;
+	current = *stack;
+	while (current)
 	{
-		return (0);
+		next_node = current->next;
+		free(current);
+		current = next_node;
 	}
-	while ((*s1 == *s2 && *s1 && *s2) && i < n - 1)
-	{
-		s1++;
-		s2++;
-		i++;
-	}
-	return ((unsigned char)(*s1) - (unsigned char)(*s2));
+	*stack = NULL;
 }
