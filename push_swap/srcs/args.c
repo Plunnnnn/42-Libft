@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 17:19:05 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/10/12 19:27:06 by bdenfir          ###   ########.fr       */
+/*   Updated: 2024/10/12 19:46:44 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	parse_and_compress(int argc, char **argv, t_stack **stack)
 	compressed = (int *)malloc((argc - 1) * sizeof(int));
 	if (!arr || !compressed)
 		exit(EXIT_FAILURE);
-	i = 0;
+	i = 1;
 	while (i < argc)
 	{
 		arr[i - 1] = ft_atoi(argv[i]);

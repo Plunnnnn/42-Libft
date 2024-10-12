@@ -25,7 +25,6 @@ OBJ_FILES = $(OBJ_DIR)/compress.o \
 
 NAME = push_swap
 
-
 all: $(NAME)
 
 $(NAME): $(OBJ_FILES)
