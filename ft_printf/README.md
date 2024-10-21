@@ -47,7 +47,8 @@ Here is a general approach to the **ft_print** function algorithm:
 
 function ft_print(format, ...) initialize the argument list initialize character_count to 0
 
-```for each character in format:
+```
+for each character in format:
     if the character is '%':
         read the next character as specifier
         if specifier == 'd':
@@ -65,7 +66,8 @@ function ft_print(format, ...) initialize the argument list initialize character
     else:
         print the character and increment character_count
 
-return character_count```
+return character_count
+```
 
 ## 4. Code Structure
 
